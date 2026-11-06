@@ -117,7 +117,7 @@
     .pricing-card p { color: var(--muted); font-size: 12px; margin: 0; }
     .pricing-price { font: 800 26px Manrope, sans-serif; white-space: nowrap; }
     .pricing-price small { color: var(--muted); font: 500 11px 'DM Sans', sans-serif; }
-    .pricing-button { border: 0; border-radius: 7px; background: var(--ink); color: white; font-size: 12px; font-weight: 700; padding: 11px 13px; white-space: nowrap; }
+    .pricing-button { display: inline-block; text-align: center; text-decoration: none; border: 0; border-radius: 7px; background: var(--ink); color: white; font-size: 12px; font-weight: 700; padding: 11px 13px; white-space: nowrap; }
     .pricing-button:hover { background: var(--orange-dark); }
     .pricing-button:disabled { cursor: default; opacity: .72; }
     .pricing-note { text-align: center; color: #948b83; max-width: 560px; margin: 16px auto 0; font-size: 10px; line-height: 1.6; }
@@ -354,14 +354,14 @@
         <div class="section-heading">
           <span class="eyebrow"><span class="eyebrow-dot"></span> Straightforward pricing</span>
           <h2>Start tuning for free.</h2>
-          <p>The tuner is free to use. Stripe checkout can be added later if you decide to offer a paid plan.</p>
+          <p>The tuner is free to use. If you want to support Toneform’s development, Pro is available as an optional monthly subscription.</p>
         </div>
         <div class="pricing-card reveal-on-scroll">
-          <div><h3>Toneform Plus</h3><p>Optional paid features can be added later.</p></div>
-          <div class="pricing-price" id="pricingPrice">Coming later</div>
-          <button class="pricing-button" id="subscribeButton" type="button" disabled>Stripe setup later</button>
+          <div><h3>Toneform Pro</h3><p>Support future improvements to Toneform.</p></div>
+          <div class="pricing-price" id="pricingPrice">A$0.99 <small>/ month</small></div>
+          <a class="pricing-button" id="subscribeButton" href="https://buy.stripe.com/cNi7sN2SI6A44dXax51kA01">Subscribe to Pro</a>
         </div>
-        <p class="pricing-note" id="pricingNote">No payments are active. The Stripe server starter is included for when you’re ready to connect it.</p>
+        <p class="pricing-note" id="pricingNote">Pro is A$0.99 per month through Stripe. The tuner and its 30 instrument presets remain free.</p>
       </div>
     </section>
   </main>
@@ -763,7 +763,7 @@
       animationFrame = requestAnimationFrame(processAudio);
     }
 
-    // Checkout stays off until Stripe is configured and the project is ready to accept payments.
+    // Pro checkout opens the Stripe Payment Link from the pricing card.
   </script>
 </body>
 </html>
