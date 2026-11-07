@@ -4,12 +4,9 @@
   <meta name="google-site-verification" content="HLMfhDJXjchaa-nNhAqpUUrx0UA8RRODcObOp7JqPyA" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fbf8f4">
+  <meta name="theme-color" content="#050608">
   <meta name="description" content="A clear, free browser tuner for 30 instruments. Tune by listening with your device microphone.">
   <title>Toneform — Online Instrument Tuner</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -236,6 +233,185 @@
       *, *:before, *:after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .reveal-on-scroll { opacity: 1; transform: none; }
     }
+
+    /* Toneform night mode: native San Francisco typography, video hero, and a larger live tuner. */
+    :root {
+      color-scheme: dark;
+      --sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      --ink: #f5f5f7;
+      --muted: #a1a1aa;
+      --line: #2a2b31;
+      --paper: #08090c;
+      --card: #101116;
+      --orange: #ff744f;
+      --orange-dark: #ff9a73;
+      --orange-pale: rgba(255,116,79,.13);
+      --green: #61e6ad;
+      --red: #ff6974;
+      --shadow: 0 30px 100px rgba(0,0,0,.48);
+    }
+    *, *::before, *::after { box-sizing: border-box; font-family: var(--sf) !important; }
+    html { background: #050608; }
+    body { position: relative; isolation: isolate; background: #050713; color: #f5f5f7; font-family: var(--sf); }
+    body::before { content: ''; position: fixed; z-index: 0; inset: 0; pointer-events: none; background-image: radial-gradient(1.5px 1.5px at 24px 35px,rgba(255,255,255,.9) 98%,transparent),radial-gradient(1px 1px at 112px 92px,rgba(202,216,255,.85) 98%,transparent),radial-gradient(1px 1px at 205px 170px,rgba(255,220,190,.8) 98%,transparent),radial-gradient(1px 1px at 70px 220px,rgba(255,255,255,.68) 98%,transparent),radial-gradient(1.5px 1.5px at 260px 42px,rgba(255,255,255,.75) 98%,transparent),radial-gradient(ellipse at 50% -10%,rgba(67,76,147,.2),transparent 55%); background-size: 310px 280px,390px 340px,470px 400px,350px 360px,520px 470px,100% 100%; opacity: .48; animation: star-twinkle 7s ease-in-out infinite alternate; }
+    @keyframes star-twinkle { from { opacity: .34; } to { opacity: .62; } }
+    main, footer { position: relative; z-index: 1; }
+    .site-header { height: 76px; background: rgba(5,6,8,.86); border-bottom-color: rgba(255,255,255,.09); }
+    .site-header.dark-nav { background: rgba(5,6,8,.88); border-bottom-color: rgba(255,255,255,.09); }
+    .site-header.dark-nav .brand, .site-header.dark-nav .nav-links { color: #f5f5f7; }
+    .nav { width: min(1280px, calc(100% - 48px)); }
+    .brand { color: #f5f5f7; font-size: 22px; letter-spacing: -.5px; }
+    .brand-mark { width: 36px; height: 36px; border-radius: 12px; color: #08090c; background: linear-gradient(140deg,#ffb18e,#ff744f); box-shadow: 0 0 28px rgba(255,116,79,.3); }
+    .nav-links { gap: 26px; color: #c2c1c7; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta, .site-header.dark-nav .nav-cta { color: #100b09 !important; background: linear-gradient(135deg,#ffb18e,#ff744f); border-radius: 999px; padding: 13px 19px; font-size: 13px; box-shadow: 0 8px 25px rgba(255,116,79,.22); }
+    .subscription-wrap { width: min(1280px, calc(100% - 48px)); margin: 22px auto 0; position: relative; z-index: 2; }
+    .subscription-banner { display: grid; grid-template-columns: 1fr auto auto; gap: 28px; align-items: center; padding: 23px 27px; border: 1px solid rgba(255,255,255,.12); border-radius: 20px; background: linear-gradient(112deg,rgba(27,28,34,.96),rgba(13,14,18,.96)); box-shadow: 0 20px 70px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.05); }
+    .subscription-copy .eyebrow { margin-bottom: 10px; color: #ff9c7a; background: rgba(255,116,79,.1); border: 1px solid rgba(255,116,79,.2); }
+    .subscription-copy h2 { margin: 0 0 5px; color: #f6f5f7; font-size: 22px; letter-spacing: -.6px; }
+    .subscription-copy p { margin: 0; color: #a8a7af; font-size: 13px; line-height: 1.55; }
+    .subscription-price { white-space: nowrap; color: #fff; font-size: 26px; font-weight: 750; letter-spacing: -.8px; }
+    .subscription-price small { display: block; margin-top: 3px; color: #9998a1; font-size: 11px; font-weight: 500; letter-spacing: .2px; text-align: right; }
+    .subscription-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 23px; border: 1px solid rgba(255,255,255,.18); border-radius: 13px; color: #160c08; background: linear-gradient(135deg,#ffb18e,#ff744f); box-shadow: 0 9px 30px rgba(255,116,79,.25); font-size: 15px; font-weight: 750; white-space: nowrap; transition: transform .2s ease, box-shadow .2s ease; }
+    .subscription-button:hover { transform: translateY(-2px); box-shadow: 0 13px 36px rgba(255,116,79,.34); }
+    .hero { isolation: isolate; position: relative; overflow: hidden; width: 100%; max-width: none; min-height: 720px; margin: 0; padding: 76px max(24px,calc((100vw - 1280px)/2)) 88px; grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr); gap: clamp(34px,5.5vw,82px); color: #f5f5f7; background: transparent; }
+    .hero-video { position: absolute; z-index: -2; inset: 0; overflow: hidden; background: transparent; pointer-events: none; }
+    .hero-video video { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 43%; opacity: 0; filter: saturate(1.12) contrast(1.06) brightness(1.35); pointer-events: none; transition: opacity .8s ease; }
+    .hero-video.video-playing video { opacity: .52; }
+    .cartoon-layer { position: absolute; z-index: 1; top: 0; right: -2%; width: min(56vw,760px); height: 100%; display: grid; place-items: center; opacity: 1; filter: brightness(1.34) saturate(1.18); transition: opacity .8s ease; pointer-events: none; }
+    .hero-video.video-playing .cartoon-layer { opacity: .42; }
+    .cartoon-layer svg { width: 100%; height: 100%; max-height: 820px; overflow: visible; filter: drop-shadow(0 22px 90px rgba(255,116,79,.32)); }
+    .bow-motion { transform-box: view-box; transform-origin: 175px 305px; animation: bow-loop 1.55s ease-in-out infinite; }
+    @keyframes bow-loop { 0%,100% { transform: rotate(-3deg) translateY(-2px); } 50% { transform: rotate(3deg) translateY(3px); } }
+    .music-note { transform-box: view-box; animation: note-float 3.2s ease-in-out infinite; }
+    .music-note.note-two { animation-delay: -1.6s; }
+    @keyframes note-float { 0%,100% { opacity: .4; transform: translateY(7px) rotate(-4deg); } 50% { opacity: 1; transform: translateY(-12px) rotate(5deg); } }
+    .hero::after { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg,rgba(5,6,13,.84) 0%,rgba(5,6,13,.48) 42%,rgba(5,6,13,.26) 100%),linear-gradient(0deg,rgba(5,6,13,.72) 0%,transparent 34%,rgba(5,6,13,.12) 100%); pointer-events: none; }
+    .hero > div:not(.hero-video), .hero > .tuner-card { position: relative; z-index: 1; }
+    .eyebrow { color: #ff9a73; background: rgba(255,116,79,.1); border: 1px solid rgba(255,116,79,.2); }
+    .eyebrow-dot { box-shadow: 0 0 14px rgba(255,116,79,.8); }
+    h1 { color: #fbfafc; font-size: clamp(54px,6vw,82px); letter-spacing: -4.5px; text-wrap: balance; }
+    h1 em { color: #ff8b65; }
+    .hero-copy { color: #c0bec6; font-size: 17px; }
+    .hero-points { color: #dedde2; font-size: 13px; gap: 18px; }
+    .check { color: #79e6b8; }
+    .tuner-card { width: 100%; padding: clamp(24px,3vw,38px); border: 1px solid rgba(255,255,255,.14); border-radius: 25px; color: #f5f5f7; background: rgba(12,13,17,.88); box-shadow: 0 35px 100px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.08); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
+    .tuner-card:before { width: 300px; height: 300px; right: -190px; top: -205px; background: rgba(255,116,79,.14); filter: blur(5px); }
+    .card-label { color: #f2f1f4; font-size: 16px; }
+    .live-pill { color: #aaa9b1; font-size: 11px; }
+    .live-dot { background: #5a5b64; }
+    .live-dot.active { background: #61e6ad; box-shadow: 0 0 0 5px rgba(97,230,173,.14),0 0 20px rgba(97,230,173,.52); }
+    .select-row { gap: 12px; margin: 24px 0 17px; }
+    .select-wrap:after { color: #aaa8b1; top: 15px; }
+    select { border-color: #363740; color: #f3f2f5; border-radius: 11px; padding: 15px 38px 15px 15px; background: #17181e; font-size: 15px; }
+    select option { color: #f4f3f6; background: #17181e; }
+    select:focus { border-color: #ff8a64; box-shadow: 0 0 0 4px rgba(255,116,79,.16); }
+    .mode-toggle { border-color: #363740; color: #dddbe2; background: #17181e; border-radius: 11px; padding: 0 16px; font-size: 13px; }
+    .mode-toggle:hover { border-color: #ff8a64; color: #fff; }
+    .string-targets { gap: 8px; min-height: 36px; margin-bottom: 14px; }
+    .string-target { border-color: #34353d; color: #c7c5cd; background: #191a20; border-radius: 8px; padding: 7px 11px; font-size: 12px; }
+    .string-target.selected { color: #ffad8d; background: rgba(255,116,79,.13); border-color: rgba(255,116,79,.48); }
+    .tuner-readout { isolation: isolate; overflow: hidden; min-height: 385px; padding: 27px 25px 26px; border: 1px solid rgba(255,255,255,.09); border-radius: 19px; background: radial-gradient(ellipse at 50% 38%,rgba(255,116,79,.13),transparent 45%),linear-gradient(145deg,#17181e,#0c0d11 72%); }
+    .tuner-readout::before { content: ''; z-index: -1; position: absolute; width: 330px; height: 330px; left: 50%; top: 45%; border: 1px solid rgba(255,255,255,.08); border-radius: 50%; transform: translate(-50%,-50%); box-shadow: 0 0 65px rgba(255,116,79,.07),inset 0 0 55px rgba(255,116,79,.035); animation: tuner-orbit-pulse 4.5s ease-in-out infinite alternate; }
+    .tuner-readout::after { content: ''; z-index: -1; position: absolute; width: 240px; height: 240px; left: 50%; top: 45%; border: 1px solid rgba(255,255,255,.055); border-radius: 50%; transform: translate(-50%,-50%); }
+    @keyframes tuner-orbit-pulse { to { transform: translate(-50%,-50%) scale(1.08); opacity: .55; } }
+    .pitch-state { height: 20px; color: #aaa8b1; font-size: 12px; letter-spacing: 1.1px; }
+    .pitch-state.good { color: #79e6b8; }
+    .pitch-state.high { color: #ff7f87; }
+    .pitch-state.low { color: #ffb56f; }
+    .note { margin: 13px 0 -5px; color: #75747e; font-size: clamp(116px,12vw,154px); line-height: .95; letter-spacing: -8px; text-shadow: 0 12px 70px rgba(255,255,255,.06); transition: color .18s ease, text-shadow .18s ease; }
+    .note.detected { color: #fff; text-shadow: 0 0 40px rgba(255,255,255,.12),0 0 80px rgba(255,116,79,.13); }
+    .octave { color: #aaa8b1; font-size: 31px; margin-left: 5px; }
+    .frequency { color: #c1bec7; font-size: 15px; height: 22px; }
+    .needle-area { height: 91px; margin: 22px 0 3px; }
+    .needle-scale { height: 8px; top: 38px; left: 4%; width: 92%; background: linear-gradient(90deg,#d98b64,#6a676b 43%,#6a676b 57%,#d98b64); box-shadow: 0 0 24px rgba(255,116,79,.08); }
+    .needle-scale:before, .needle-scale:after { background: #817f87; }
+    .needle-scale:before { height: 32px; top: -12px; background: #f1eff4; box-shadow: 0 0 12px rgba(255,255,255,.18); }
+    .needle-scale:after { top: -6px; height: 20px; box-shadow: 76px 0 #817f87,152px 0 #817f87,228px 0 #817f87,304px 0 #817f87,380px 0 #817f87,456px 0 #817f87,532px 0 #817f87; }
+    .needle { top: 20px; height: 47px; width: 4px; background: #ff825b; box-shadow: 0 0 19px rgba(255,116,79,.72); }
+    .needle:after { bottom: -6px; width: 12px; height: 12px; box-shadow: 0 0 15px rgba(255,116,79,.65); }
+    .scale-labels { color: #aaa8b1; font-size: 11px; }
+    .cents-line { color: #cfccd4; font-size: 15px; height: 21px; }
+    .start-button { margin-top: 18px; border-radius: 13px; padding: 19px 20px; color: #160b08; background: linear-gradient(135deg,#ffad89,#ff744f); font-size: 17px; box-shadow: 0 12px 32px rgba(255,116,79,.23); transition: transform .2s ease,box-shadow .2s ease; }
+    .start-button:hover { background: linear-gradient(135deg,#ffc0a0,#ff865f); box-shadow: 0 14px 38px rgba(255,116,79,.32); }
+    .start-button.stop { color: #f4f2f6; background: #303139; box-shadow: none; }
+    .mic-message { color: #aaa8b1; font-size: 11px; }
+    .reference-row { border-top-color: rgba(255,255,255,.11); color: #aaa8b1; font-size: 12px; }
+    .reference-control input { accent-color: #ff825b; }
+    .reference-control strong { color: #f4f2f6; }
+    .trust-row { border-color: rgba(255,255,255,.1); background: rgba(8,9,18,.62); backdrop-filter: blur(8px); }
+    .trust-inner { width: min(1280px,calc(100% - 48px)); color: #aaa8b1; font-size: 13px; }
+    .trust-icon { color: #ff8a64; }
+    .story-scroll { background: rgba(7,8,17,.7); }
+    .story-sticky:before { background: radial-gradient(ellipse at 71% 49%,rgba(255,116,79,.13),transparent 36%),radial-gradient(ellipse at 13% 88%,rgba(255,255,255,.025),transparent 35%); }
+    .story-title { color: #f6f5f8; }
+    .section { width: min(1280px,calc(100% - 48px)); }
+    .section-heading h2, .section-heading { color: #f5f4f7; }
+    .section-heading p { color: #a3a2ab; }
+    .feature { border-color: #24252c; border-radius: 16px; color: #f5f4f7; background: linear-gradient(145deg,#111217,#0b0c10); box-shadow: inset 0 1px rgba(255,255,255,.035); }
+    .feature-icon { color: #ff9c78; background: rgba(255,116,79,.12); }
+    .feature h3 { color: #f4f3f6; font-size: 17px; }
+    .feature p { color: #a3a2ab; font-size: 13px; }
+    .instrument-strip { border: 1px solid #292a31; color: #f5f4f7; background: linear-gradient(135deg,#17181e,#0c0d11); }
+    .instrument-strip p { color: #aaa8b1; font-size: 13px; }
+    .instrument-chip { border-color: #383941; color: #e4e2e8; background: #1c1d23; padding: 9px 12px; font-size: 12px; }
+    .pricing-section { border-color: #24252c; background: #08090c; }
+    .pricing-card { border-color: #303139; background: #13141a; }
+    .pricing-card h3 { color: #f4f3f6; }
+    .pricing-card p, .pricing-price small { color: #a3a2ab; }
+    .pricing-price { color: #fff; }
+    .pricing-button { border-radius: 11px; color: #100b09; background: linear-gradient(135deg,#ffad89,#ff744f); padding: 15px 20px; font-size: 15px; box-shadow: 0 8px 26px rgba(255,116,79,.22); }
+    .pricing-button:hover { color: #100b09; background: linear-gradient(135deg,#ffc0a0,#ff865f); }
+    .pricing-note { color: #898892; font-size: 11px; }
+    footer { width: min(1280px,calc(100% - 48px)); border-color: rgba(255,255,255,.1); color: #92919a; }
+    .footer-brand { color: #f4f3f6; }
+    @media (max-width: 900px) {
+      .hero { min-height: 0; grid-template-columns: 1fr; padding-top: 64px; padding-bottom: 74px; }
+      .hero > div:not(.hero-video) { max-width: 650px; }
+      .tuner-card { max-width: 760px; margin: 0 auto; }
+      .subscription-banner { grid-template-columns: 1fr auto; }
+      .subscription-button { grid-column: 1 / -1; }
+    }
+    @media (max-width: 600px) {
+      .site-header { height: 68px; }
+      .nav { width: calc(100% - 30px); }
+      .nav-links { gap: 10px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-cta, .site-header.dark-nav .nav-cta { padding: 11px 13px; font-size: 11px; }
+      .subscription-wrap { width: calc(100% - 30px); margin-top: 13px; }
+      .subscription-banner { grid-template-columns: 1fr auto; gap: 15px; padding: 19px; border-radius: 17px; }
+      .subscription-copy h2 { font-size: 18px; }
+      .subscription-copy p { font-size: 11px; }
+      .subscription-price { font-size: 21px; }
+      .subscription-button { min-height: 50px; width: 100%; grid-column: 1 / -1; font-size: 14px; }
+      .hero { width: 100%; padding: 47px 15px 55px; gap: 28px; }
+      .hero-video video { object-position: 58% center; }
+      .cartoon-layer { right: -14%; width: 82vw; opacity: .72; }
+      .hero-video.video-playing .cartoon-layer { opacity: .3; }
+      h1 { max-width: 100%; font-size: 53px; letter-spacing: -3px; }
+      .hero-copy { font-size: 14px; }
+      .hero-points { gap: 10px 14px; font-size: 11px; }
+      .tuner-card { padding: 17px; border-radius: 19px; }
+      .tuner-readout { min-height: 330px; padding: 22px 12px; }
+      .tuner-readout::before { width: 270px; height: 270px; }
+      .note { font-size: clamp(100px,24vw,126px); letter-spacing: -6px; }
+      .octave { font-size: 23px; }
+      .needle-scale:after { box-shadow: 40px 0 #817f87,80px 0 #817f87,120px 0 #817f87,160px 0 #817f87,200px 0 #817f87,240px 0 #817f87,280px 0 #817f87; }
+      .trust-inner, .section, footer { width: calc(100% - 30px); }
+      .trust-inner { justify-content: flex-start; gap: 13px; }
+      .trust-item { white-space: normal; font-size: 10px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .section { padding: 58px 0; }
+      .instrument-strip { padding: 22px; }
+      .pricing-card { align-items: flex-start; flex-wrap: wrap; }
+      .pricing-card .pricing-button { width: 100%; }
+      footer { gap: 12px; flex-wrap: wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video video { display: none; }
+      .bow-motion, .music-note { animation: none; }
+      .hero { background: radial-gradient(ellipse at 70% 40%,rgba(255,116,79,.2),transparent 48%),transparent; }
+    }
   </style>
 </head>
 <body>
@@ -248,17 +424,74 @@
       <div class="nav-links">
         <a href="#experience">Experience</a>
         <a href="#instruments">Instruments</a>
-        <a href="#pricing">Pricing</a>
-        <a class="nav-cta" href="#tuner">Open tuner <span aria-hidden="true">↗</span></a>
+        <a href="#tuner">Tuner</a>
+        <a class="nav-cta" href="#pricing">Pro · A$0.99/mo <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
   </header>
 
   <main id="top">
+    <section class="subscription-wrap" id="pricing" aria-label="Toneform Pro subscription">
+      <div class="subscription-banner">
+        <div class="subscription-copy">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> Optional monthly support</span>
+          <h2>Toneform Pro</h2>
+          <p>Support future improvements. The tuner and all 30 instrument presets stay free.</p>
+        </div>
+        <div class="subscription-price">A$0.99<small>per month</small></div>
+        <a class="subscription-button" href="https://buy.stripe.com/cNi7sN2SI6A44dXax51kA01">Subscribe to Pro <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
     <section class="hero">
+      <div class="hero-video" aria-hidden="true">
+        <div class="cartoon-layer">
+          <svg viewBox="0 0 540 720" role="img" aria-label="Cartoon violinist playing in a continuous loop">
+            <defs>
+              <radialGradient id="violinGlow"><stop offset="0" stop-color="#ff916c" stop-opacity=".26"/><stop offset="1" stop-color="#ff916c" stop-opacity="0"/></radialGradient>
+              <linearGradient id="jacket" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#45475a"/><stop offset="1" stop-color="#171923"/></linearGradient>
+              <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc27d"/><stop offset=".55" stop-color="#bd6439"/><stop offset="1" stop-color="#713b2e"/></linearGradient>
+              <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1bd91"/><stop offset="1" stop-color="#bd8066"/></linearGradient>
+            </defs>
+            <circle cx="280" cy="355" r="258" fill="url(#violinGlow)"/>
+            <circle cx="280" cy="355" r="220" fill="none" stroke="#ff9b72" stroke-opacity=".13"/>
+            <circle cx="280" cy="355" r="188" fill="none" stroke="#fff" stroke-opacity=".07" stroke-dasharray="2 13"/>
+            <g class="music-note" fill="#ffd4bd" font-family="Arial,sans-serif" font-size="43" opacity=".8"><text x="93" y="230">♪</text></g>
+            <g class="music-note note-two" fill="#ff9b72" font-family="Arial,sans-serif" font-size="34" opacity=".8"><text x="400" y="190">♫</text></g>
+            <path d="M151 340 Q125 300 160 270 Q195 242 235 246 L312 252 Q360 260 383 308 L415 663 L114 663Z" fill="url(#jacket)" stroke="#77798a" stroke-opacity=".25" stroke-width="2"/>
+            <path d="M226 239 L270 278 L311 244 L336 273 L291 363 L248 363 L207 272Z" fill="#e9e4dc"/>
+            <path d="M251 265 L278 291 L294 266 L286 382 L258 382Z" fill="#242530"/>
+            <path d="M235 194 L236 253 L276 280 L310 247 L302 190Z" fill="url(#skin)"/>
+            <ellipse cx="270" cy="143" rx="66" ry="78" fill="url(#skin)"/>
+            <path d="M205 145 Q195 78 248 63 Q303 47 332 99 L335 133 Q309 114 294 91 Q275 119 218 123 L215 167Z" fill="#22232b"/>
+            <path d="M224 144 Q237 136 249 143 M284 143 Q297 136 309 143" fill="none" stroke="#40312e" stroke-width="5" stroke-linecap="round"/>
+            <path d="M229 145 Q237 149 245 145 M290 145 Q298 149 306 145" fill="none" stroke="#25232a" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M270 151 L264 174 L276 176" fill="none" stroke="#a66f5b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M252 192 Q270 202 288 190" fill="none" stroke="#8e4f4b" stroke-width="3" stroke-linecap="round"/>
+            <path d="M215 280 Q194 292 206 325 L276 356 L294 326 L245 286Z" fill="url(#jacket)" stroke="#77798a" stroke-opacity=".22" stroke-width="2"/>
+            <path d="M330 276 Q356 277 366 302 L350 326 L323 310Z" fill="url(#jacket)"/>
+            <path d="M339 307 L390 290 L401 310 L359 334Z" fill="url(#skin)"/>
+            <path d="M319 296 Q343 283 362 300 L375 315 L355 327 L328 316Z" fill="url(#wood)" stroke="#ffd18e" stroke-opacity=".45" stroke-width="2"/>
+            <path d="M357 306 L459 288 L463 302 L362 322Z" fill="#59352c"/>
+            <path d="M453 287 L476 281 L479 291 L462 302Z" fill="url(#wood)"/>
+            <path d="M369 304 L371 320 M389 299 L391 316 M410 295 L412 312 M431 291 L433 308" stroke="#f6d8a8" stroke-opacity=".75" stroke-width="1.4"/>
+            <path d="M323 294 Q334 286 344 292 M325 318 Q336 327 347 320" fill="none" stroke="#f8d99e" stroke-width="2"/>
+            <g class="bow-motion">
+              <path d="M163 295 Q185 285 207 299 L277 334 L265 361 L194 334 Q171 324 163 295Z" fill="#343746" stroke="#77798a" stroke-opacity=".35" stroke-width="2"/>
+              <path d="M261 345 L448 298" stroke="#e5d4bd" stroke-width="4" stroke-linecap="round"/>
+              <path d="M260 351 L450 304" stroke="#ffddb5" stroke-opacity=".78" stroke-width="1.4"/>
+              <circle cx="264" cy="348" r="12" fill="url(#skin)"/>
+            </g>
+            <path d="M133 663 Q270 642 397 663" fill="none" stroke="#ff9b72" stroke-opacity=".22" stroke-width="2"/>
+          </svg>
+        </div>
+        <video autoplay muted loop playsinline preload="metadata" tabindex="-1">
+          <source src="https://videos.pexels.com/video-files/5331165/5331165-hd_1920_1080_24fps.mp4" type="video/mp4">
+        </video>
+      </div>
       <div>
         <span class="eyebrow"><span class="eyebrow-dot"></span> Your sound, in tune</span>
-        <h1>Find your<br><em>perfect pitch.</em></h1>
+        <h1>Make every<br><em>note resonate.</em></h1>
         <p class="hero-copy">A precise, beautifully simple tuner for the instruments you play. Open it in your browser, allow microphone access, and tune with confidence.</p>
         <div class="hero-points">
           <span><b class="check">✓</b> Free to tune</span>
@@ -350,30 +583,24 @@
       </div>
     </section>
 
-    <section class="pricing-section" id="pricing">
-      <div class="section">
-        <div class="section-heading">
-          <span class="eyebrow"><span class="eyebrow-dot"></span> Straightforward pricing</span>
-          <h2>Start tuning for free.</h2>
-          <p>The tuner is free to use. If you want to support Toneform’s development, Pro is available as an optional monthly subscription.</p>
-        </div>
-        <div class="pricing-card reveal-on-scroll">
-          <div><h3>Toneform Pro</h3><p>Support future improvements to Toneform.</p></div>
-          <div class="pricing-price" id="pricingPrice">A$0.99 <small>/ month</small></div>
-          <a class="pricing-button" id="subscribeButton" href="https://buy.stripe.com/cNi7sN2SI6A44dXax51kA01">Subscribe to Pro</a>
-        </div>
-        <p class="pricing-note" id="pricingNote">Pro is A$0.99 per month through Stripe. The tuner and its 30 instrument presets remain free.</p>
-      </div>
-    </section>
   </main>
 
   <footer>
     <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 15.5V8.5M9.3 19V5M14.7 16.5v-9M20 13.5v-3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span><span>Toneform</span></a>
-    <span>Made for musicians, wherever you practice.</span>
+    <span>Made for musicians, wherever you practice. · <a href="https://www.pexels.com/video/close-up-view-of-a-man-playing-violin-5331165/" target="_blank" rel="noopener">Violin video by Sergey Makashin / Pexels</a></span>
     <span>© <span id="year"></span> Toneform</span>
   </footer>
 
   <script>
+    // Keep the inline cartoon visible if the remote video cannot autoplay or load.
+    const heroVideo = document.querySelector('.hero-video video');
+    const heroVideoFrame = document.querySelector('.hero-video');
+    if (heroVideo && heroVideoFrame) {
+      heroVideo.addEventListener('playing', function () { heroVideoFrame.classList.add('video-playing'); });
+      heroVideo.addEventListener('error', function () { heroVideoFrame.classList.remove('video-playing'); });
+      heroVideo.play().catch(function () { heroVideoFrame.classList.remove('video-playing'); });
+    }
+
     // These presets use concert-pitch note names. Wind instruments are chromatic.
     const instruments = [
       { name: 'Guitar · Standard', short: 'Guitar', strings: [['E2',40],['A2',45],['D3',50],['G3',55],['B3',59],['E4',64]] },
@@ -768,11 +995,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
